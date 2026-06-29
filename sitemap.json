@@ -1,0 +1,9 @@
+{
+  "desc": "房源展示管理 Demo",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

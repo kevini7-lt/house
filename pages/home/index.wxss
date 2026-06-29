@@ -1,0 +1,86 @@
+.banner {
+  height: 260rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.banner-item {
+  height: 260rpx;
+  box-sizing: border-box;
+  padding: 46rpx 38rpx;
+  color: #ffffff;
+}
+
+.banner-title {
+  font-size: 42rpx;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.banner-subtitle {
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  opacity: 0.92;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  height: 88rpx;
+  margin-top: 24rpx;
+  padding: 0 24rpx;
+}
+
+.search-icon {
+  width: 48rpx;
+  color: #1677ff;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.search input {
+  flex: 1;
+  height: 88rpx;
+  font-size: 28rpx;
+}
+
+.section-title {
+  margin: 32rpx 0 18rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.community-card {
+  margin-bottom: 20rpx;
+  padding: 26rpx;
+}
+
+.community-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.community-name {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.community-address,
+.community-meta {
+  margin-top: 12rpx;
+  color: #6b7280;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.community-count {
+  flex: 0 0 auto;
+  color: #1677ff;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.dot {
+  margin: 0 10rpx;
+}

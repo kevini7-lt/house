@@ -1,0 +1,6 @@
+@import "/theme/theme.wxss";
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+}

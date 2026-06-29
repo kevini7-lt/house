@@ -1,0 +1,11 @@
+<view class="room card" bindtap="handleTap">
+  <image class="room-cover" src="{{room.cover}}" mode="aspectFill" />
+  <view class="room-body">
+    <view class="room-top">
+      <view class="room-number">Room{{room.number}}</view>
+      <view class="room-status {{room.status === '可入住' ? 'room-status-ok' : 'room-status-off'}}">{{room.status}}</view>
+    </view>
+    <view class="room-rent">{{formatRent(room.rent)}}</view>
+    <view class="room-meta">{{room.buildingName}} · {{room.communityName}}</view>
+  </view>
+</view>

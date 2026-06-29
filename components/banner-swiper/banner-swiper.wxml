@@ -1,0 +1,25 @@
+<view class="banner card">
+  <swiper
+    class="banner-swiper"
+    autoplay
+    circular
+    interval="3500"
+    duration="500"
+    indicator-dots
+    indicator-active-color="#2f6fe4"
+    indicator-color="rgba(255,255,255,0.55)"
+  >
+    <block wx:for="{{list}}" wx:key="id">
+      <swiper-item>
+        <view class="banner-item">
+          <image class="banner-image" src="{{item.image}}" mode="aspectFill" />
+          <view class="banner-mask"></view>
+          <view class="banner-content">
+            <view class="banner-title">{{item.title}}</view>
+            <view class="banner-subtitle">{{item.subtitle}}</view>
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

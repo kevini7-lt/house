@@ -1,0 +1,74 @@
+.header {
+  padding: 30rpx;
+}
+
+.title {
+  font-size: 38rpx;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin-top: 12rpx;
+  color: #6b7280;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.stats {
+  display: flex;
+  gap: 48rpx;
+  margin-top: 28rpx;
+}
+
+.num {
+  color: #1677ff;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.label {
+  margin-left: 8rpx;
+  color: #6b7280;
+  font-size: 24rpx;
+}
+
+.section-title {
+  margin: 32rpx 0 18rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+}
+
+.building-card {
+  margin-bottom: 20rpx;
+  padding: 26rpx;
+}
+
+.building-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.building-name {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.building-address,
+.building-meta {
+  margin-top: 12rpx;
+  color: #6b7280;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.room-count {
+  flex: 0 0 auto;
+  color: #16a34a;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.dot {
+  margin: 0 10rpx;
+}

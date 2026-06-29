@@ -1,0 +1,9 @@
+<view class="header card">
+  <view class="header-main">
+    <view class="header-title">{{title}}</view>
+    <view wx:if="{{subtitle}}" class="header-subtitle">{{subtitle}}</view>
+  </view>
+  <view wx:if="{{actionText}}" class="header-action" bindtap="handleActionTap">
+    {{actionText}}
+  </view>
+</view>

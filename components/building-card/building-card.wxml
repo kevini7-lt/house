@@ -1,0 +1,8 @@
+<view class="building card" bindtap="handleTap">
+  <image class="building-cover" src="{{building.cover}}" mode="aspectFill" />
+  <view class="building-body">
+    <view class="building-title">{{building.name}}</view>
+    <view class="building-meta">共 {{building.roomCount}} 间房</view>
+    <view class="building-meta">点击查看房间列表</view>
+  </view>
+</view>

@@ -1,0 +1,64 @@
+@import "/theme/theme.wxss";
+
+.room {
+  display: flex;
+  padding: 18rpx;
+}
+
+.room-cover {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 20rpx;
+  flex-shrink: 0;
+}
+
+.room-body {
+  flex: 1;
+  min-width: 0;
+  padding-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.room-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.room-number {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #1f2d3d;
+}
+
+.room-status {
+  padding: 8rpx 14rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  line-height: 1;
+}
+
+.room-status-ok {
+  background: #e8f7ef;
+  color: #18a058;
+}
+
+.room-status-off {
+  background: #fef0f0;
+  color: #d14343;
+}
+
+.room-rent {
+  margin-top: 14rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #2f6fe4;
+}
+
+.room-meta {
+  margin-top: 12rpx;
+  color: #64748b;
+  font-size: 24rpx;
+}

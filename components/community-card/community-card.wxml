@@ -1,0 +1,11 @@
+<view class="community card" bindtap="handleTap">
+  <image class="community-cover" src="{{community.cover}}" mode="aspectFill" />
+  <view class="community-body">
+    <view class="community-title-row">
+      <view class="community-title">{{community.name}}</view>
+      <view class="community-badge">{{community.buildingCount}}栋</view>
+    </view>
+    <view class="community-meta">{{community.address}}</view>
+    <view class="community-meta">{{community.metro}}</view>
+  </view>
+</view>
