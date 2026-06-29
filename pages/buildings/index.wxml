@@ -1,36 +1,18 @@
 <view class="page">
   <view class="header card">
     <view class="title">{{community.name || '小区楼栋'}}</view>
-    <view class="subtitle">{{community.address || '正在展示该小区楼栋信息'}}</view>
-    <view class="stats">
-      <view>
-        <text class="num">{{community.buildingCount || buildings.length || 0}}</text>
-        <text class="label">栋楼</text>
-      </view>
-      <view>
-        <text class="num">{{community.roomCount || 0}}</text>
-        <text class="label">间房</text>
-      </view>
-    </view>
+    <view class="subtitle">正在展示该小区的楼栋信息</view>
   </view>
 
   <view class="section-title">楼栋列表</view>
   <view wx:if="{{loading}}" class="empty">正在加载楼栋...</view>
   <view wx:elif="{{buildings.length === 0}}" class="empty">暂无楼栋数据</view>
   <view wx:else>
-    <view class="building-card card" wx:for="{{buildings}}" wx:key="id" bindtap="goRooms" data-id="{{item.id}}">
-      <view class="building-row">
-        <view>
-          <view class="building-name">{{item.name || '未命名楼栋'}}</view>
-          <view class="building-address">{{item.address || '暂无地址'}}</view>
-        </view>
-        <view class="room-count">{{item.roomCount || 0}} 间</view>
-      </view>
-      <view class="building-meta">
-        <text>{{item.floorCount || 0}} 层</text>
-        <text class="dot">·</text>
-        <text>{{item.elevator ? '有电梯' : '无电梯'}}</text>
-      </view>
-    </view>
+    <building-card
+      wx:for="{{buildings}}"
+      wx:key="id"
+      building="{{item}}"
+      bindtap="goRooms"
+    />
   </view>
 </view>

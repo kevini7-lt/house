@@ -151,6 +151,7 @@ function normalizeRoom(item) {
   return {
     type: 'room',
     id: room.id || '',
+    roomId: room.id || '',
     communityId: room.communityId || '',
     buildingId: room.buildingId || '',
     communityName: room.communityName || '',

@@ -39,8 +39,8 @@ Page({
   },
 
   goRooms: function (event) {
-    var dataset = event && event.currentTarget && event.currentTarget.dataset ? event.currentTarget.dataset : {}
-    var buildingId = dataset.id || ''
+    var building = event && event.detail ? event.detail.building : null
+    var buildingId = building && building.id ? building.id : ''
     if (!buildingId) {
       wx.showToast({ title: '楼栋信息不存在', icon: 'none' })
       return

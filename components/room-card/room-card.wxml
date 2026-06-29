@@ -2,10 +2,11 @@
   <image class="room-cover" src="{{room.cover}}" mode="aspectFill" />
   <view class="room-body">
     <view class="room-top">
-      <view class="room-number">Room{{room.number}}</view>
-      <view class="room-status {{room.status === '可入住' ? 'room-status-ok' : 'room-status-off'}}">{{room.status}}</view>
+      <view class="room-number">{{room.title}}</view>
+      <view class="room-rent">{{formatRent(room.rent)}}</view>
     </view>
-    <view class="room-rent">{{formatRent(room.rent)}}</view>
-    <view class="room-meta">{{room.buildingName}} · {{room.communityName}}</view>
+    <view class="room-meta" wx:if="{{room.tags && room.tags.length}}">
+      <text wx:for="{{room.tags}}" wx:key="*this">{{item}}</text>
+    </view>
   </view>
 </view>
