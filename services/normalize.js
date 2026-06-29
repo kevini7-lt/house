@@ -118,6 +118,7 @@ function normalizeBuilding(item, roomList) {
     communityId: building.communityId || '',
     name: name,
     title: name,
+    buildingNo: name,
     subtitle: subtitle.join(' | '),
     description: createTitle(building.address, ''),
     cover: cover,

@@ -1,12 +1,5 @@
 <view class="page home-page">
-  <swiper class="banner" autoplay circular indicator-dots indicator-color="rgba(255,255,255,.45)" indicator-active-color="#ffffff">
-    <swiper-item wx:for="{{banners}}" wx:key="id">
-      <view class="banner-item" style="background: {{item.color || '#1677ff'}};">
-        <view class="banner-title">{{item.title || '智慧租房管理系统'}}</view>
-        <view class="banner-subtitle">{{item.subtitle || '房源信息稳定展示'}}</view>
-      </view>
-    </swiper-item>
-  </swiper>
+  <banner-swiper list="{{banners}}" />
 
   <view class="search card">
     <text class="search-icon">搜</text>
@@ -18,22 +11,11 @@
   <view wx:if="{{loading}}" class="empty">正在加载房源数据...</view>
   <view wx:elif="{{communities.length === 0}}" class="empty">暂无匹配小区</view>
   <view wx:else>
-    <view class="community-card card" wx:for="{{communities}}" wx:key="id" bindtap="goBuildings" data-id="{{item.id}}">
-      <view class="community-main">
-        <view>
-          <view class="community-name">{{item.name || '未命名小区'}}</view>
-          <view class="community-address">{{item.district || ''}} · {{item.address || '暂无地址'}}</view>
-        </view>
-        <view class="community-count">{{item.roomCount || 0}} 间</view>
-      </view>
-      <view class="community-meta">
-        <text>{{item.buildingCount || 0}} 栋楼</text>
-        <text class="dot">·</text>
-        <text>点击查看楼栋</text>
-      </view>
-      <view>
-        <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
-      </view>
-    </view>
+    <community-card
+      wx:for="{{communities}}"
+      wx:key="id"
+      community="{{item}}"
+      bindtap="goBuildings"
+    />
   </view>
 </view>

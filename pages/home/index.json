@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "banner-swiper": "/components/banner-swiper/banner-swiper",
+    "community-card": "/components/community-card/community-card"
+  }
+}

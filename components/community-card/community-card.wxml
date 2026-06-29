@@ -5,7 +5,6 @@
       <view class="community-title">{{community.name}}</view>
       <view class="community-badge">{{community.buildingCount}}栋</view>
     </view>
-    <view class="community-meta">{{community.address}}</view>
-    <view class="community-meta">{{community.metro}}</view>
+    <view class="community-meta">{{community.description || community.address}}</view>
   </view>
 </view>

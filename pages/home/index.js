@@ -36,8 +36,8 @@ Page({
         })
       })
       .catch(function (error) {
-        console.error('首页数据加载失败', error)
-        wx.showToast({ title: '加载失败', icon: 'none' })
+        console.error('棣栭〉鏁版嵁鍔犺浇澶辫触', error)
+        wx.showToast({ title: '鍔犺浇澶辫触', icon: 'none' })
         that.setData({ banners: [], communities: [] })
       })
       .finally(function () {
@@ -46,11 +46,13 @@ Page({
   },
 
   goBuildings: function (event) {
-    var id = event && event.currentTarget && event.currentTarget.dataset ? event.currentTarget.dataset.id : ''
+    var community = event && event.detail ? event.detail.community : null
+    var id = community && community.id ? community.id : ''
     if (!id) {
-      wx.showToast({ title: '小区信息不存在', icon: 'none' })
+      wx.showToast({ title: '灏忓尯淇℃伅涓嶅瓨鍦?', icon: 'none' })
       return
     }
+
     wx.navigateTo({ url: '/pages/buildings/index?communityId=' + id })
   }
 })
