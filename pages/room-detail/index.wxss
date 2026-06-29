@@ -63,11 +63,32 @@
   padding: 24rpx;
 }
 
+.favorite-card {
+  padding: 24rpx;
+}
+
 .tag-title {
   margin-bottom: 16rpx;
   font-size: 30rpx;
   font-weight: 700;
   color: #1f2d3d;
+}
+
+.favorite-button {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 20rpx;
+  background: #ffffff;
+  color: #2f6fe4;
+  border: 1rpx solid #dbe7fb;
+  font-size: 28rpx;
+  line-height: 88rpx;
+}
+
+.favorite-button-active {
+  background: #f0f6ff;
+  color: #1677ff;
+  border-color: #cfe0fb;
 }
 
 .action-row {

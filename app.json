@@ -4,6 +4,7 @@
     "pages/buildings/index",
     "pages/rooms/index",
     "pages/room-detail/index",
+    "pages/favorites/index",
     "pages/search/index",
     "pages/admin/index"
   ],

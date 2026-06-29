@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "room-card": "/components/room-card/room-card"
+  }
+}

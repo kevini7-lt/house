@@ -1,0 +1,16 @@
+<view class="page favorites-page">
+  <view class="page-container">
+    <view class="section-title">Favorites</view>
+
+    <view wx:if="{{loading}}" class="empty">Loading favorites...</view>
+    <view wx:elif="{{rooms.length === 0}}" class="empty">No favorite rooms</view>
+    <view wx:else>
+      <room-card
+        wx:for="{{rooms}}"
+        wx:key="roomId"
+        room="{{item}}"
+        bindtap="goRoomDetail"
+      />
+    </view>
+  </view>
+</view>

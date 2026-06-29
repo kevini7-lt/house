@@ -3,6 +3,7 @@ var delay = require('../utils/delay')
 var clone = require('../utils/clone')
 var normalize = require('./normalize')
 var search = require('./search')
+var favorite = require('./favoriteService')
 
 function safeArray(value) {
   return Array.isArray(value) ? value : []
@@ -129,5 +130,10 @@ module.exports = {
   getCommunityById: getCommunityById,
   getBuildingById: getBuildingById,
   getRoomById: getRoomById,
-  searchService: search.searchService
+  searchService: search.searchService,
+  addFavorite: favorite.addFavorite,
+  removeFavorite: favorite.removeFavorite,
+  toggleFavorite: favorite.toggleFavorite,
+  isFavorite: favorite.isFavorite,
+  getFavoriteList: favorite.getFavoriteList
 }
