@@ -3,6 +3,7 @@
     "pages/home/index",
     "pages/buildings/index",
     "pages/rooms/index",
+    "pages/room-detail/index",
     "pages/admin/index"
   ],
   "window": {

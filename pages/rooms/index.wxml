@@ -1,13 +1,13 @@
 <view class="page">
   <view class="header card">
-    <view class="title">{{building.name || '房间列表'}}</view>
-    <view class="subtitle">{{building.address || '展示楼栋下的全部房间'}}</view>
+    <view class="title">{{building.name || '鎴块棿鍒楄〃'}}</view>
+    <view class="subtitle">{{building.address || '灞曠ず妤兼爧涓嬬殑鍏ㄩ儴鎴块棿'}}</view>
   </view>
 
-  <view wx:if="{{loading}}" class="empty">正在加载房间...</view>
-  <view wx:elif="{{rooms.length === 0}}" class="empty">暂无房间数据</view>
+  <view wx:if="{{loading}}" class="empty">姝ｅ湪鍔犺浇鎴块棿...</view>
+  <view wx:elif="{{rooms.length === 0}}" class="empty">鏆傛棤鎴块棿鏁版嵁</view>
   <view wx:else>
-    <view class="room-card card" wx:for="{{rooms}}" wx:key="id">
+    <view class="room-card card" wx:for="{{rooms}}" wx:key="id" bindtap="goRoomDetail" data-id="{{item.id}}">
       <view class="room-top">
         <view>
           <view class="room-title">{{item.communityName || ''}} {{item.buildingName || ''}} {{item.number || ''}} 室</view>
@@ -35,7 +35,7 @@
         <text class="tag" wx:for="{{item.tags}}" wx:key="*this">{{item}}</text>
       </view>
 
-      <button class="call-btn" bindtap="callOwner" data-phone="{{item.phone}}">联系房东 {{item.phone || ''}}</button>
+      <button class="call-btn" catchtap="callOwner" data-phone="{{item.phone}}">联系房东 {{item.phone || ''}}</button>
     </view>
   </view>
 </view>

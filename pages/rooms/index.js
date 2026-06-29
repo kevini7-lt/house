@@ -34,8 +34,8 @@ Page({
         })
       })
       .catch(function (error) {
-        console.error('房间数据加载失败', error)
-        wx.showToast({ title: '房间加载失败', icon: 'none' })
+        console.error('鎴块棿鏁版嵁鍔犺浇澶辫触', error)
+        wx.showToast({ title: '鎴块棿鍔犺浇澶辫触', icon: 'none' })
         that.setData({ building: null, rooms: [] })
       })
       .finally(function () {
@@ -43,10 +43,23 @@ Page({
       })
   },
 
+  goRoomDetail: function (event) {
+    var dataset = event && event.currentTarget && event.currentTarget.dataset ? event.currentTarget.dataset : {}
+    var roomId = dataset.id || ''
+    if (!roomId) {
+      wx.showToast({ title: '鎴块棿淇℃伅涓嶅瓨鍦?', icon: 'none' })
+      return
+    }
+
+    wx.navigateTo({
+      url: '/pages/room-detail/index?roomId=' + roomId
+    })
+  },
+
   callOwner: function (event) {
     var phone = event && event.currentTarget && event.currentTarget.dataset ? event.currentTarget.dataset.phone : ''
     if (!phone) {
-      wx.showToast({ title: '暂无联系电话', icon: 'none' })
+      wx.showToast({ title: '鏆傛棤鑱旂郴鐢佃瘽', icon: 'none' })
       return
     }
     wx.makePhoneCall({ phoneNumber: phone })

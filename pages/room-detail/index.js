@@ -1,8 +1,5 @@
-const {
-  fetchRoomById
-} = require('../../services');
-const { formatRent, formatPhone } = require('../../utils/format');
-const { goBack } = require('../../utils/navigation');
+var services = require('../../services/index')
+var format = require('../../utils/format')
 
 Page({
   data: {
@@ -10,70 +7,47 @@ Page({
     imageList: [],
     pageTitle: '房间详情',
     loading: true,
-    formatRent,
-    formatPhone
+    formatRent: format.formatRent
   },
 
-  onLoad(options) {
-    this.roomId = options.roomId || '';
-    this.loadRoomDetail();
+  onLoad: function (options) {
+    this.roomId = options && options.roomId ? options.roomId : ''
+    this.loadRoomDetail()
   },
 
-  async loadRoomDetail() {
-    if (!this.roomId) {
+  loadRoomDetail: function () {
+    var that = this
+
+    if (!that.roomId) {
       wx.showToast({
         title: '缺少房间信息',
         icon: 'none'
-      });
-      goBack();
-      return;
+      })
+      that.setData({ loading: false })
+      return
     }
 
-    wx.showLoading({ title: '加载中' });
+    wx.showLoading({ title: '加载中' })
 
-    try {
-      const room = await fetchRoomById(this.roomId);
-
-      this.setData({
-        room,
-        imageList: room ? room.gallery : [],
-        pageTitle: room ? `Room${room.number}` : '房间详情',
-        loading: false
-      });
-    } catch (error) {
-      wx.showToast({
-        title: '房间详情加载失败',
-        icon: 'none'
-      });
-      this.setData({ loading: false });
-    } finally {
-      wx.hideLoading();
-    }
-  },
-
-  handleCall() {
-    if (!this.data.room) {
-      return;
-    }
-
-    wx.makePhoneCall({
-      phoneNumber: this.data.room.phone
-    });
-  },
-
-  handleCopyWechat() {
-    if (!this.data.room) {
-      return;
-    }
-
-    wx.setClipboardData({
-      data: this.data.room.wechat,
-      success: () => {
+    return services.getRoomById(that.roomId)
+      .then(function (room) {
+        that.setData({
+          room: room || null,
+          imageList: room ? (room.gallery && room.gallery.length ? room.gallery : [room.cover].filter(Boolean)) : [],
+          pageTitle: room ? room.title || (room.number ? 'Room' + room.number : '房间详情') : '房间详情',
+          loading: false
+        })
+      })
+      .catch(function (error) {
+        console.error('房间详情加载失败', error)
         wx.showToast({
-          title: '微信号已复制',
-          icon: 'success'
-        });
-      }
-    });
+          title: '房间详情加载失败',
+          icon: 'none'
+        })
+        that.setData({ loading: false })
+      })
+      .finally(function () {
+        wx.hideLoading()
+      })
   }
-});
+})

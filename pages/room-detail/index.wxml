@@ -5,7 +5,8 @@
       subtitle="{{room ? room.address : '请先选择房间'}}"
     />
 
-    <view wx:if="{{room}}" class="detail-body">
+    <view wx:if="{{loading}}" class="empty">正在加载房间...</view>
+    <view wx:elif="{{room}}" class="detail-body">
       <view class="card gallery-card">
         <swiper class="gallery-swiper" indicator-dots autoplay circular>
           <block wx:for="{{imageList}}" wx:key="*this">
@@ -16,54 +17,32 @@
         </swiper>
       </view>
 
-      <view class="card video-card">
-        <video
-          class="video-player"
-          src="{{room.videoUrl}}"
-          poster="{{room.cover}}"
-          controls
-          show-center-play-btn
-          object-fit="cover"
-        />
-      </view>
-
       <view class="card info-card">
         <view class="info-row">
+          <view class="info-label">标题</view>
+          <view class="info-value">{{room.title || room.name || 'Room'}}</view>
+        </view>
+        <view class="info-row">
           <view class="info-label">房号</view>
-          <view class="info-value">Room{{room.number}}</view>
+          <view class="info-value">{{room.number || '暂无'}}</view>
         </view>
         <view class="info-row">
           <view class="info-label">租金</view>
           <view class="info-value text-primary">{{formatRent(room.rent)}}</view>
         </view>
         <view class="info-row">
-          <view class="info-label">联系人</view>
-          <view class="info-value">{{room.contactName}}</view>
+          <view class="info-label">户型</view>
+          <view class="info-value">{{room.layout || '暂无'}}</view>
         </view>
         <view class="info-row">
-          <view class="info-label">电话</view>
-          <view class="info-value">{{formatPhone(room.phone)}}</view>
-        </view>
-        <view class="info-row">
-          <view class="info-label">微信</view>
-          <view class="info-value">{{room.wechat}}</view>
-        </view>
-        <view class="info-row">
-          <view class="info-label">地址</view>
-          <view class="info-value">{{room.address}}</view>
+          <view class="info-label">描述</view>
+          <view class="info-value">{{room.description || room.address || '暂无描述'}}</view>
         </view>
       </view>
 
-      <view class="card tag-card">
+      <view class="card tag-card" wx:if="{{room.tags && room.tags.length}}">
         <view class="tag-title">房源标签</view>
         <tag-list tags="{{room.tags}}" />
-      </view>
-
-      <view class="sticky-footer">
-        <view class="action-row">
-          <button class="action-button action-call" bindtap="handleCall">拨打电话</button>
-          <button class="action-button action-copy" bindtap="handleCopyWechat">复制微信号</button>
-        </view>
       </view>
     </view>
   </view>
