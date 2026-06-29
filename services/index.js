@@ -1,9 +1,7 @@
 var data = require('./data')
 var delay = require('../utils/delay')
 var clone = require('../utils/clone')
-var communityHelper = require('./community')
-var buildingHelper = require('./building')
-var roomHelper = require('./room')
+var normalize = require('./normalize')
 
 function safeArray(value) {
   return Array.isArray(value) ? value : []
@@ -22,7 +20,9 @@ function withDelay(result) {
 }
 
 function getBannerList() {
-  return withDelay(safeArray(data.bannerList))
+  return withDelay(safeArray(data.bannerList).map(function (item) {
+    return normalize.normalizeBanner(item)
+  }))
 }
 
 function getCommunityList(options) {
@@ -34,7 +34,7 @@ function getCommunityList(options) {
       return matchText((item && item.name) + ' ' + (item && item.district) + ' ' + (item && item.address), keyword)
     })
     .map(function (item) {
-      return communityHelper.normalizeCommunity(item, roomList, buildingList)
+      return normalize.normalizeCommunity(item, roomList, buildingList)
     })
 
   return withDelay(list)
@@ -51,7 +51,7 @@ function getBuildingList(options) {
       return hitCommunity && hitKeyword
     })
     .map(function (item) {
-      return buildingHelper.normalizeBuilding(item, rooms)
+      return normalize.normalizeBuilding(item, rooms)
     })
 
   return withDelay(list)
@@ -77,7 +77,7 @@ function getRoomList(options) {
       return hitCommunity && hitBuilding && hitKeyword
     })
     .map(function (item) {
-      return roomHelper.normalizeRoom(item)
+      return normalize.normalizeRoom(item)
     })
 
   return withDelay(list)
@@ -99,7 +99,7 @@ function getCommunityById(id) {
   var item = safeArray(data.communityList).find(function (community) {
     return community && community.id === id
   })
-  var result = item ? communityHelper.normalizeCommunity(item, safeArray(data.roomList), safeArray(data.buildingList)) : null
+  var result = item ? normalize.normalizeCommunity(item, safeArray(data.roomList), safeArray(data.buildingList)) : null
   return withDelay(result)
 }
 
@@ -107,7 +107,7 @@ function getBuildingById(id) {
   var item = safeArray(data.buildingList).find(function (building) {
     return building && building.id === id
   })
-  var result = item ? buildingHelper.normalizeBuilding(item, safeArray(data.roomList)) : null
+  var result = item ? normalize.normalizeBuilding(item, safeArray(data.roomList)) : null
   return withDelay(result)
 }
 
@@ -115,7 +115,7 @@ function getRoomById(id) {
   var item = safeArray(data.roomList).find(function (room) {
     return room && room.id === id
   })
-  var result = item ? roomHelper.normalizeRoom(item) : null
+  var result = item ? normalize.normalizeRoom(item) : null
   return withDelay(result)
 }
 
