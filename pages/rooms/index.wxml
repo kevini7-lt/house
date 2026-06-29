@@ -4,14 +4,56 @@
     <view class="subtitle">展示楼栋下的全部房间</view>
   </view>
 
+  <view class="filter card">
+    <view class="filter-row">
+      <input class="filter-input" type="number" value="{{filters.priceMin}}" bindinput="onPriceMinInput" placeholder="最低价" />
+      <input class="filter-input" type="number" value="{{filters.priceMax}}" bindinput="onPriceMaxInput" placeholder="最高价" />
+    </view>
+    <view class="filter-row">
+      <input class="filter-input" value="{{filters.buildingNo}}" bindinput="onBuildingNoInput" placeholder="楼栋" />
+      <picker mode="selector" range="{{roomTypeOptions}}" value="{{roomTypeIndex}}" bindchange="onRoomTypeChange">
+        <view class="filter-picker">{{roomTypeOptions[roomTypeIndex]}}</view>
+      </picker>
+    </view>
+    <view class="filter-row">
+      <picker mode="selector" range="{{statusOptions}}" value="{{statusIndex}}" bindchange="onStatusChange">
+        <view class="filter-picker">{{statusOptions[statusIndex]}}</view>
+      </picker>
+      <button class="filter-btn" bindtap="applyFilters">筛选</button>
+      <button class="filter-btn filter-btn-ghost" bindtap="resetFilters">重置</button>
+    </view>
+  </view>
+
   <view wx:if="{{loading}}" class="empty">正在加载房间...</view>
   <view wx:elif="{{rooms.length === 0}}" class="empty">暂无房间数据</view>
   <view wx:else>
-    <room-card
-      wx:for="{{rooms}}"
-      wx:key="roomId"
-      room="{{item}}"
-      bindtap="goRoomDetail"
-    />
+    <view class="room-card card" wx:for="{{rooms}}" wx:key="roomId" bindtap="goRoomDetail" data-roomid="{{item.roomId}}">
+      <view class="room-top">
+        <view>
+          <view class="room-title">{{item.title}}</view>
+          <view class="room-address">{{item.buildingNoText || item.buildingName}} · {{item.roomTypeText}}</view>
+        </view>
+        <view class="rent">¥{{item.rent || 0}}</view>
+      </view>
+
+      <view class="room-info">
+        <view>
+          <text class="info-label">户型</text>
+          <text class="info-value">{{item.roomTypeText}}</text>
+        </view>
+        <view>
+          <text class="info-label">状态</text>
+          <text class="info-value status-{{item.statusText === '已租' ? 'rented' : 'free'}}">{{item.statusText}}</text>
+        </view>
+        <view>
+          <text class="info-label">楼栋</text>
+          <text class="info-value">{{item.buildingNoText || item.buildingName}}</text>
+        </view>
+      </view>
+
+      <view class="tags" wx:if="{{item.tagTextList && item.tagTextList.length}}">
+        <text class="tag" wx:for="{{item.tagTextList}}" wx:key="*this">{{item}}</text>
+      </view>
+    </view>
   </view>
 </view>

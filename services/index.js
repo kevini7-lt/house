@@ -4,6 +4,7 @@ var clone = require('../utils/clone')
 var normalize = require('./normalize')
 var search = require('./search')
 var favorite = require('./favoriteService')
+var filter = require('./filter')
 
 function safeArray(value) {
   return Array.isArray(value) ? value : []
@@ -131,6 +132,7 @@ module.exports = {
   getBuildingById: getBuildingById,
   getRoomById: getRoomById,
   searchService: search.searchService,
+  filterRoomList: filter.filterRoomList,
   addFavorite: favorite.addFavorite,
   removeFavorite: favorite.removeFavorite,
   toggleFavorite: favorite.toggleFavorite,
