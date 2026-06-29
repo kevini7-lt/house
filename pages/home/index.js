@@ -21,7 +21,19 @@ Page({
   onSearchInput: function (event) {
     var value = event && event.detail ? event.detail.value : ''
     this.setData({ keyword: value || '' })
-    this.loadHome(value || '')
+  },
+
+  goSearch: function (event) {
+    var value = event && event.detail ? event.detail.value : ''
+    var keyword = value || this.data.keyword || ''
+    if (!keyword) {
+      wx.showToast({ title: '请输入关键词', icon: 'none' })
+      return
+    }
+
+    wx.navigateTo({
+      url: '/pages/search/index?keyword=' + encodeURIComponent(keyword)
+    })
   },
 
   loadHome: function (keyword) {

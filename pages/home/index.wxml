@@ -3,7 +3,7 @@
 
   <view class="search card">
     <text class="search-icon">搜</text>
-    <input value="{{keyword}}" bindinput="onSearchInput" placeholder="搜索小区、区域或地址" confirm-type="search" />
+    <input value="{{keyword}}" bindinput="onSearchInput" bindconfirm="goSearch" placeholder="搜索小区、区域或地址" confirm-type="search" />
   </view>
 
   <view class="section-title">小区列表</view>

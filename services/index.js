@@ -2,6 +2,7 @@ var data = require('./data')
 var delay = require('../utils/delay')
 var clone = require('../utils/clone')
 var normalize = require('./normalize')
+var search = require('./search')
 
 function safeArray(value) {
   return Array.isArray(value) ? value : []
@@ -127,5 +128,6 @@ module.exports = {
   getBannerList: getBannerList,
   getCommunityById: getCommunityById,
   getBuildingById: getBuildingById,
-  getRoomById: getRoomById
+  getRoomById: getRoomById,
+  searchService: search.searchService
 }

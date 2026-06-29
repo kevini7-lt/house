@@ -1,0 +1,67 @@
+@import "/theme/theme.wxss";
+
+.search-bar {
+  padding: 18rpx;
+  margin-bottom: 24rpx;
+}
+
+.search-bar input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #dbe7fb;
+  border-radius: 16rpx;
+  background: #ffffff;
+  font-size: 28rpx;
+}
+
+.result-card {
+  margin-bottom: 20rpx;
+  padding: 24rpx;
+}
+
+.result-row {
+  display: flex;
+  gap: 20rpx;
+}
+
+.result-cover-wrap {
+  flex: 0 0 auto;
+}
+
+.result-cover {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 16rpx;
+}
+
+.result-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.result-type {
+  color: #1677ff;
+  font-size: 22rpx;
+}
+
+.result-title {
+  margin-top: 8rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.result-subtitle {
+  margin-top: 8rpx;
+  color: #6b7280;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.result-price {
+  margin-top: 10rpx;
+  color: #f97316;
+  font-size: 28rpx;
+  font-weight: 700;
+}
